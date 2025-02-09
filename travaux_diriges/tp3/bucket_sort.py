@@ -1,5 +1,7 @@
 from builtins import print as seq_print
 from mpi4py import MPI
+import random
+random.seed(0)
 
 my_comm = MPI.COMM_WORLD.Dup()
 
@@ -10,3 +12,9 @@ def print(*args, **kwargs):
 
 
 print("Hello")
+
+def rnd():
+    return int(random.uniform(0, 1000000))
+
+local_data = [ rnd() for _ in range(10) ]
+print(local_data)
